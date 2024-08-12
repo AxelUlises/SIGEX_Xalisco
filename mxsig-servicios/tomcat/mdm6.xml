@@ -1,0 +1,568 @@
+<tables>
+	<table search="true" identify="true" buffer="true" user_alias="Municipio" projects="mdm6">
+		<server>servidorsote</server>
+		<database>mdm6data</database>
+		<schema>mg</schema>
+		<name>municipios</name>
+		<alias>c101</alias>
+		<geometry>the_geom</geometry>
+		<projection>900913</projection>
+		<resolution>
+			<min>0.298582141</min>
+			<max>305.748113098</max>
+		</resolution>
+		<totals>
+		    <column>
+		        <name>pobtot</name>
+		        <alias>Población total</alias>
+		    </column>
+		    <column>
+		        <name>hombres</name>
+		        <alias>Población masculina</alias>
+		    </column>
+		    <column>
+		        <name>mujeres</name>
+		        <alias>Población femenina</alias>
+		    </column>
+			<sql alias='totals'>
+				select
+				sum( cast( pobtot as numeric ) ) as pobtot,
+				sum( cast( hombres as numeric ) ) as hombres,
+				sum( cast( mujeres as numeric ) ) as mujeres
+				from inter15.v_munpob
+				THEWHERE
+			</sql>
+		</totals>
+		<fields>
+			<field identify="true">
+				<name>gid</name>
+				<alias>ID</alias>
+			</field>
+			<field identify="true">
+				<name>nombre</name>
+				<alias>nombre</alias>
+			</field>
+			<field>
+				<name>cvegeo</name>
+				<alias>Clave geoestadística: </alias>
+			</field>
+			<field>
+				<name>cve_ent</name>
+				<alias>Clave de la entidad: </alias>
+			</field>
+			<field>
+				<name>cve_mun</name>
+				<alias>Clave del municipios: </alias>
+			</field>
+			<field>
+				<name>gid</name>
+				<alias>buffer</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_Envelope</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>ubicacion</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_PointOnSurface</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>coordenada</alias>
+			</field>
+		</fields>
+		<search>
+			<!-- el primer field segun definido aqui es el obligatorio -->
+			<field type="tsearch">
+				<name>spvector</name>
+			</field>
+		</search>
+	</table>
+
+	<table search="true" identify="true" buffer="true" user_alias="Localidad" projects="mdm6">
+		<server>servidorsote</server>
+		<database>mdm6data</database>
+		<schema>mg</schema>
+		<name>localidades</name>
+		<alias>c102</alias>
+		<geometry>the_geom</geometry>
+		<projection>900913</projection>
+		<resolution>
+			<min>0.298582141</min>
+			<max>305.748113098</max>
+		</resolution>
+		<totals>
+		    <column>
+		        <name>pobtot</name>
+		        <alias>Población total</alias>
+		    </column>
+		    <column>
+		        <name>hombres</name>
+		        <alias>Población masculina</alias>
+		    </column>
+		    <column>
+		        <name>mujeres</name>
+		        <alias>Población femenina</alias>
+		    </column>
+			<sql alias='totals'>
+				select
+				sum( cast( pobtot as numeric ) ) as pobtot,
+				sum( cast( hombres as numeric ) ) as hombres,
+				sum( cast( mujeres as numeric ) ) as mujeres
+				from inter15.v_munpob
+				THEWHERE
+			</sql>
+		</totals>
+		<fields>
+			<field identify="true">
+				<name>gid</name>
+				<alias>ID</alias>
+			</field>
+			<field identify="true">
+				<name>nomgeo</name>
+				<alias>nombre</alias>
+			</field>
+			<field>
+				<name>cvegeo</name>
+				<alias>Clave geoestadística: </alias>
+			</field>
+			<field>
+				<name>ambito</name>
+				<alias>Tipo de localidad: </alias>
+			</field>
+			<field>
+				<name>gid</name>
+				<alias>buffer</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_Envelope</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>ubicacion</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_PointOnSurface</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>coordenada</alias>
+			</field>
+		</fields>
+		<search>
+			<!-- el primer field segun definido aqui es el obligatorio -->
+			<field type="tsearch">
+				<name>spvector</name>
+			</field>
+		</search>
+	</table>
+
+	<table search="true" identify="true" buffer="true" user_alias="Servicio" projects="mdm6">
+		<server>servidorsote</server>
+		<database>mdm6data</database>
+		<schema>mg</schema>
+		<name>servicios</name>
+		<alias>c103</alias>
+		<geometry>the_geom</geometry>
+		<projection>900913</projection>
+		<resolution>
+			<min>0.298582141</min>
+			<max>305.748113098</max>
+		</resolution>
+		<totals>
+		    <column>
+		        <name>pobtot</name>
+		        <alias>Población total</alias>
+		    </column>
+		    <column>
+		        <name>hombres</name>
+		        <alias>Población masculina</alias>
+		    </column>
+		    <column>
+		        <name>mujeres</name>
+		        <alias>Población femenina</alias>
+		    </column>
+			<sql alias='totals'>
+				select
+				sum( cast( pobtot as numeric ) ) as pobtot,
+				sum( cast( hombres as numeric ) ) as hombres,
+				sum( cast( mujeres as numeric ) ) as mujeres
+				from inter15.v_munpob
+				THEWHERE
+			</sql>
+		</totals>
+		<fields>
+			<field identify="true">
+				<name>gid</name>
+				<alias>ID</alias>
+			</field>
+			<field identify="true">
+				<name>nombre</name>
+				<alias>nombre</alias>
+			</field>
+			<field>
+				<name>geografico</name>
+				<alias> </alias>
+			</field>
+			<field>
+				<name>tipo_</name>
+				<alias>Tipo de servicio: </alias>
+			</field>
+			<field>
+				<name>cvegeo</name>
+				<alias>Clave geoestadística: </alias>
+			</field>
+			<field>
+				<name>gid</name>
+				<alias>buffer</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_Envelope</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>ubicacion</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_PointOnSurface</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>coordenada</alias>
+			</field>
+		</fields>
+		<search>
+			<!-- el primer field segun definido aqui es el obligatorio -->
+			<field type="tsearch">
+				<name>spvector</name>
+			</field>
+		</search>
+	</table>
+
+	<table search="true" identify="true" buffer="true" user_alias="Servicio" projects="mdm6">
+		<server>servidorsote</server>
+		<database>mdm6data</database>
+		<schema>mg</schema>
+		<name>manzana</name>
+		<alias>c105</alias>
+		<geometry>the_geom</geometry>
+		<projection>900913</projection>
+		<resolution>
+			<min>0.298582141</min>
+			<max>305.748113098</max>
+		</resolution>
+		<totals>
+		    <column>
+		        <name>pobtot</name>
+		        <alias>Población total</alias>
+		    </column>
+		    <column>
+		        <name>hombres</name>
+		        <alias>Población masculina</alias>
+		    </column>
+		    <column>
+		        <name>mujeres</name>
+		        <alias>Población femenina</alias>
+		    </column>
+			<sql alias='totals'>
+				select
+				sum( cast( pobtot as numeric ) ) as pobtot,
+				sum( cast( hombres as numeric ) ) as hombres,
+				sum( cast( mujeres as numeric ) ) as mujeres
+				from inter15.v_munpob
+				THEWHERE
+			</sql>
+		</totals>
+		<fields>
+			<field identify="true">
+				<name>gid</name>
+				<alias>ID</alias>
+			</field>
+			<field identify="true">
+				<name>nombre</name>
+				<alias>nombre</alias>
+			</field>
+			<field>
+				<name>cvegeo</name>
+				<alias>Clave geoestadística: </alias>
+			</field>
+			<field>
+				<name>pob1</name>
+				<alias>Población total: </alias>
+			</field>
+			<field>
+				<name>gid</name>
+				<alias>buffer</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_Envelope</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>ubicacion</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_PointOnSurface</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>coordenada</alias>
+			</field>
+		</fields>
+		<search>
+			<!-- el primer field segun definido aqui es el obligatorio -->
+			<field type="tsearch">
+				<name>spvector</name>
+			</field>
+		</search>
+	</table>
+
+	<table search="true" identify="true" buffer="true" user_alias="Ovitrampa" projects="mdm6">
+		<server>servidorsote</server>
+		<database>mdm6data</database>
+		<schema>ssn</schema>
+		<name>ovitrampa</name>
+		<alias>c200</alias>
+		<geometry>the_geom</geometry>
+		<projection>900913</projection>
+		<resolution>
+			<min>0.298582141</min>
+			<max>305.748113098</max>
+		</resolution>
+		<totals>
+		    <column>
+		        <name>pobtot</name>
+		        <alias>Población total</alias>
+		    </column>
+		    <column>
+		        <name>hombres</name>
+		        <alias>Población masculina</alias>
+		    </column>
+		    <column>
+		        <name>mujeres</name>
+		        <alias>Población femenina</alias>
+		    </column>
+			<sql alias='totals'>
+				select
+				sum( cast( pobtot as numeric ) ) as pobtot,
+				sum( cast( hombres as numeric ) ) as hombres,
+				sum( cast( mujeres as numeric ) ) as mujeres
+				from inter15.v_munpob
+				THEWHERE
+			</sql>
+		</totals>
+		<fields>
+			<field identify="true">
+				<name>gid</name>
+				<alias>ID</alias>
+			</field>
+			<field identify="true">
+				<name>nombre</name>
+				<alias>nombre</alias>
+			</field>
+			<field>
+				<name>folio</name>
+				<alias>Clave geoestadística: </alias>
+			</field>
+			<field>
+				<name>gid</name>
+				<alias>buffer</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_Envelope</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>ubicacion</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_PointOnSurface</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>coordenada</alias>
+			</field>
+		</fields>
+		<search>
+			<!-- el primer field segun definido aqui es el obligatorio -->
+			<field type="tsearch">
+				<name>spvector</name>
+			</field>
+		</search>
+	</table>
+
+	<table search="true" identify="true" buffer="true" user_alias="Beneficiario " projects="mdm6">
+		<server>servidorsote</server>
+		<database>mdm6data</database>
+		<schema>bienestar</schema>
+		<name>beneficiarios</name>
+		<alias>cbeneficiario</alias>
+		<geometry>the_geom</geometry>
+		<projection>900913</projection>
+		<resolution>
+			<min>0.298582141</min>
+			<max>305.748113098</max>
+		</resolution>
+		<totals>
+		    <column>
+		        <name>pobtot</name>
+		        <alias>Población total</alias>
+		    </column>
+		    <column>
+		        <name>hombres</name>
+		        <alias>Población masculina</alias>
+		    </column>
+		    <column>
+		        <name>mujeres</name>
+		        <alias>Población femenina</alias>
+		    </column>
+			<sql alias='totals'>
+				select
+				sum( cast( pobtot as numeric ) ) as pobtot,
+				sum( cast( hombres as numeric ) ) as hombres,
+				sum( cast( mujeres as numeric ) ) as mujeres
+				from inter15.v_munpob
+				THEWHERE
+			</sql>
+		</totals>
+		<fields>
+			<field identify="true">
+				<name>gid</name>
+				<alias>ID</alias>
+			</field>
+			<field identify="true">
+				<name>nombre</name>
+				<alias>nombre</alias>
+			</field>
+			<field>
+				<name>status</name>
+				<alias>Estatus: </alias>
+			</field>
+			<field>
+				<name>curp</name>
+				<alias>CURP: </alias>
+			</field>
+			<field>
+				<name>direccion</name>
+				<alias>Domcilio: </alias>
+			</field>
+			<field>
+				<name>edad</name>
+				<alias>Edad: </alias>
+			</field>
+			<field>
+				<name>gid</name>
+				<alias>buffer</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_Envelope</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>ubicacion</alias>
+			</field>
+			<field search_display="false" query_display="true">
+				<functions>
+					<function order="2">
+						<fname>ST_AsText</fname>
+					</function>
+					<function order="1">
+						<fname>ST_PointOnSurface</fname>
+					</function>
+				</functions>
+				<name>the_geom</name>
+				<alias>coordenada</alias>
+			</field>
+		</fields>
+		<search>
+			<!-- el primer field segun definido aqui es el obligatorio -->
+			<field type="tsearch">
+				<name>spvector</name>
+			</field>
+		</search>
+	</table>
+
+	<table search="false" identify="false" buffer="false" user_alias="Geometria" projects="mdm6;denue">
+		<server>servidorsote</server>
+		<database>mdm6data</database>
+		<schema>control</schema>
+		<name>mibuffer</name>
+		<alias>geometrias</alias>
+		<geometry>the_geom</geometry>
+		<projection>900913</projection>
+		<fields>
+			<field>
+				<name>gid</name>
+				<alias>ID</alias>
+			</field>
+			<!-- si field no especifica atributos de search_display y query_display, 
+				ambos son true por default -->
+			<field search_display="true" query_display="false">
+				<name>fechahora</name>
+				<alias>Fecha</alias>
+			</field>
+			<field search_display="true" query_display="false">
+				<name>the_geom</name>
+				<alias>Geometry</alias>
+			</field>
+		</fields>
+	</table>
+
+</tables>

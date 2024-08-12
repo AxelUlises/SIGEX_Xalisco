@@ -1,0 +1,39 @@
+Ejemplo de creacion de campos para la busqueda
+ALTER TABLE mgn.manzanas ADD COLUMN coord_merc character varying;
+ALTER TABLE mgn.manzanas ADD COLUMN locacion character varying;
+ALTER TABLE mgn.manzanas ADD COLUMN tabla character varying;
+ALTER TABLE mgn.manzanas ADD COLUMN tipo character varying;
+ALTER TABLE mgn.manzanas ADD COLUMN busqueda character varying;
+ALTER TABLE mgn.manzanas ADD COLUMN nombre character varying;
+
+coord_merc = st_y((ST_PointOnSurface(the_geom)))||','||st_x(ST_PointOnSurface(the_geom)),
+locacion = st_y(ST_Transform (ST_PointOnSurface(the_geom),4326))||','||st_x(ST_Transform (ST_PointOnSurface(the_geom),4326))
+
+el campo tabla = el mismo nombre que se le da en la configuración del xml para la identificación
+
+tipo = según el tipo de información de la que se trate
+
+busqueda = a la concatenación de los campos según se desagregación
+    busqueda mas profunda
+    nom_ent||', '||nom_mun
+
+nombre, es lo mas representativo de la tabla
+
+-Para entidades
+
+nombre = nom_ent
+
+
+-Para municipios
+
+nombre = nom_mun
+
+
+-Para localidades
+
+
+nombre = nom_loc
+
+-Para calles
+
+nombre = nom_vial
